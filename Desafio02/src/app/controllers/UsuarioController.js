@@ -10,15 +10,15 @@ const postSchema = Yup.object().shape({
 const putSchema = Yup.object().shape({
   Nome:Yup.string(),
   Email:Yup.string().email(),
-  // SenhaAntiga: Yup.string().min(6),
-  // Senha: Yup.string()
-  //       .min(6)
-  //       .when("SenhaAntiga", (SenhaAntiga, field) =>
-  //       SenhaAntiga ? field.required() : field
-  //       ),
-  //     SenhaConfirmacao: Yup.string().when("Senha", (Senha, field) =>
-  //     Senha ? field.required().oneOf([Yup.ref("Senha")]) : field
-  //     )
+  SenhaAntiga: Yup.string().min(6),
+  Senha: Yup.string()
+        .min(6)
+        .when("SenhaAntiga", (SenhaAntiga, field) =>
+        SenhaAntiga ? field.required() : field
+        ),
+      SenhaConfirmacao: Yup.string().when("Senha", (Senha, field) =>
+      Senha ? field.required().oneOf([Yup.ref("Senha")]) : field
+      )
 });
 
 class UsuarioController {

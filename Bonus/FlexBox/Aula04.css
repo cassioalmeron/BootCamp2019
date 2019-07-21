@@ -1,0 +1,22 @@
+html,
+body,
+#app {
+  height: 100%;
+  margin: 0;
+}
+
+#app {
+  display: flex;
+}
+
+.box {
+  width: 300px;
+  height: 60px;
+  background: #f00;
+  margin: 5px;
+  /* flex-grow: 1; */
+  /* flex-shrink: 0; */
+
+  /* primeiro parametro é o flex-grow, o segundo é o flex-shrink */
+  flex: 1 0;
+}

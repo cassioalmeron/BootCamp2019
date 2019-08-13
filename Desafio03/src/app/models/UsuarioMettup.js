@@ -16,8 +16,8 @@ class UsuarioMettup extends Model {
   }
 
   static associate(models) {
-    this.belongsTo(models.Mettup, { foreignKey: "IdMettup", as: "Mettup" });
-    this.belongsTo(models.Usuario, { foreignKey: "IdUsuario", as: "Usuario" });
+    this.belongsTo(models.Mettup, { foreignKey: "IdMettup" });
+    this.belongsTo(models.Usuario, { foreignKey: "IdUsuario" });
   }
 }
 

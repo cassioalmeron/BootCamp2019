@@ -13,6 +13,7 @@ module.exports = {
         onUpdate: "CASCADE",
         // onDelete: "SET NULL",
         allowNull: false,
+        unique: "UsuarioMettup_IX",
       },
       IdMettup: {
         type: Sequelize.INTEGER,
@@ -20,6 +21,7 @@ module.exports = {
         onUpdate: "CASCADE",
         // onDelete: "SET NULL",
         allowNull: false,
+        unique: "UsuarioMettup_IX",
       },
       createdAt: {
         type: Sequelize.DATE,

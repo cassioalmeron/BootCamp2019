@@ -1,16 +1,31 @@
 import * as Yup from "yup";
 import * as DateFns from "date-fns";
+import { Op } from "sequelize";
 import Mettup from "../models/Mettup";
+import UsuarioMettup from "../models/UsuarioMettup";
 import Arquivo from "../models/Arquivo";
 
 class UsuarioMettupController {
   async index(req, res) {
-    const retorno = await Mettup.findAll({
+    const data = new Date();
+
+    let mettups = await UsuarioMettup.findAll({
       where: { IdUsuario: req.UsuarioId },
-      order: ["DataHora"],
+      attributes: [],
+      order: [[Mettup, "DataHora"]],
+      include: [
+        {
+          model: Mettup,
+          as: "Mettup",
+          where: { DataHora: { [Op.gte]: data } },
+          attributes: ["Id", "Titulo", "Localizacao", "DataHora"],
+        },
+      ],
     });
 
-    return res.json(retorno);
+    mettups = mettups.map(x => x.Mettup);
+
+    return res.json(mettups);
   }
 
   async store(req, res) {
